@@ -1,0 +1,111 @@
+﻿<Window x:Class="Project2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="1006" Width="1196.5">
+    <Grid>
+        <Viewport3D x:Name="viewport1" 
+                    MouseLeftButtonDown="viewport1_MouseLeftButtonDown"  
+                    MouseLeftButtonUp="viewport1_MouseLeftButtonUp"
+                    MouseUp="viewport1_MouseUp"
+                    MouseDown="viewport1_MouseDown"
+                    MouseRightButtonDown="ToleTips_MouseRightDown"
+                    MouseRightButtonUp="viewport1_MouseRightButtonUp"
+                    MouseMove="viewport1_MouseMove"
+                    MouseWheel="viewport1_MouseWheel" Margin="0,0,0,83" >
+            <Viewport3D.Camera >
+                <PerspectiveCamera x:Name="kamera" Position="115, 250, 310" 
+                                   LookDirection="0, -220, -200" UpDirection="0,1,0"/>
+            </Viewport3D.Camera>
+            <ModelVisual3D>
+                <ModelVisual3D.Content>
+                    <DirectionalLight Color="White" Direction="10,-1000,-100" />
+                </ModelVisual3D.Content>
+            </ModelVisual3D>
+
+            <ModelVisual3D x:Name = "MyModel" >
+                <ModelVisual3D.Content>
+
+                    <GeometryModel3D x:Name="Top">
+                        <GeometryModel3D.Material>
+                            <DiffuseMaterial>
+                                <DiffuseMaterial.Brush>
+                                    <ImageBrush ImageSource="bin/Debug/map.jpg" />
+                                </DiffuseMaterial.Brush>
+                            </DiffuseMaterial>
+                        </GeometryModel3D.Material>
+                        <GeometryModel3D.Geometry>
+                            <MeshGeometry3D Positions="0,0,0 235,0,0 0,0,155 235,0,155"
+                                TextureCoordinates="0,0 1,0 0,1 1,1"
+                                TriangleIndices="0 3 1 0 2 3"/>
+                        </GeometryModel3D.Geometry>
+
+                    </GeometryModel3D>
+                </ModelVisual3D.Content>
+
+            </ModelVisual3D>
+            <ModelVisual3D x:Name = "MyModel2">
+                <ModelVisual3D.Content>
+
+                    <GeometryModel3D x:Name="Top2">
+                        <GeometryModel3D.Material>
+                            <DiffuseMaterial>
+                                <DiffuseMaterial.Brush>
+                                    <ImageBrush ImageSource="bin/Debug/map.jpg" />
+                                </DiffuseMaterial.Brush>
+                            </DiffuseMaterial>
+                        </GeometryModel3D.Material>
+                        <GeometryModel3D.Geometry>
+                            <MeshGeometry3D Positions="0,-1,0 235,-1,0 0,-1,155 235,-1,155"
+                                TextureCoordinates="0,0 1,0 0,1 1,1 "
+                                TriangleIndices="0 1 2 2 1 3"/>
+                        </GeometryModel3D.Geometry>
+
+                    </GeometryModel3D>
+                </ModelVisual3D.Content>
+
+            </ModelVisual3D>
+        </Viewport3D>
+
+        <Button x:Name="button" Content="Load"  Height="83" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="200" Margin="606,0,382,0" FontSize="30" FontFamily="Showcard Gothic" Click="Load_Data"/>
+        <DockPanel Height="38" Margin="0,0,857,0" VerticalAlignment="Bottom" >
+
+            <Label Content="Switch color" VerticalAlignment="Center" Margin="0,7" Width="108" />
+            <RadioButton x:Name="rbrg"
+                     VerticalAlignment="Center" Content="Red/Green" HorizontalAlignment="Left" IsChecked="False" Checked="rbrg_Checked" Margin="0,12" Width="107" />
+            <RadioButton x:Name="rbst"
+                     Content="Standard" VerticalAlignment="Center" HorizontalAlignment="Left"
+                  IsChecked="True" Checked="rbst_Checked" Margin="0,12" Width="97"/>
+        </DockPanel>
+        <DockPanel Margin="0,0,857,43" VerticalAlignment="Bottom" >
+            <Label Content="Lines by resistance" VerticalAlignment="Center" />
+            <RadioButton  x:Name="vodavoda" 
+                      Content="different colors" HorizontalAlignment="Left"
+                     IsChecked="False" Checked="linesRB_Checked" VerticalAlignment="Center"  Width="109" />
+
+            <RadioButton  x:Name="vodnormal" 
+                IsChecked="True" Checked="linesRBD_Checked" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                    Content="Standard" Margin="0,6" Width="88" 
+                    />
+        </DockPanel>
+        <DockPanel Height="83" Width="Auto" VerticalAlignment="Bottom" Margin="443,0,641,1">
+            <Label Content="Show Lines" VerticalAlignment="Center" />
+
+            <CheckBox  x:Name="linesshow" 
+                   IsChecked="True" Unchecked="showlines" Checked="showlines" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                      Margin="0,34" Width="16" 
+                      />
+        </DockPanel>
+        <DockPanel Height="83" Width="Auto" VerticalAlignment="Bottom" Margin="300,0,750,0">
+            <Label Content="Hide inactive lines" VerticalAlignment="Center" />
+
+            <CheckBox  x:Name="inactiveLines" 
+                IsChecked="False" Unchecked="hidelines" Checked="hidelines" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                Margin="0,34" Width="18" 
+                      />
+        </DockPanel>
+    </Grid>
+</Window>
